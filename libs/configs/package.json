@@ -1,0 +1,24 @@
+{
+  "name": "@monorepo/configs",
+  "version": "0.0.1",
+  "type": "module",
+  "files": [
+    "dist/**"
+  ],
+  "exports": {
+    "./*": "./dist/*.js"
+  },
+  "private": true,
+  "scripts": {
+    "clean": "rimraf dist",
+    "lint": "run-s lint:biome typecheck",
+    "lint:fix": "biome check --write",
+    "lint:biome": "biome check",
+    "typecheck": "tsc --noEmit --project tsconfig.build.json"
+  },
+  "devDependencies": {
+    "@tsconfig/node22": "^22.0.0",
+    "@types/node": "^20.14.10",
+    "vite-tsconfig-paths": "^4.3.2"
+  }
+}
