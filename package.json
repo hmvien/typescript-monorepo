@@ -1,0 +1,25 @@
+{
+  "name": "typescript-monorepo",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@9.5.0+sha512.140036830124618d624a2187b50d04289d5a087f326c9edfc0ccd733d76c4f52c3a313d4fc148794a2a9d81553016004e6742e8cf850670268a7387fc220c903",
+  "scripts": {
+    "clean": "turbo clean && rimraf dist",
+    "build": "turbo build",
+    "build:clean": "pnpm clean && TURBO_FORCE=true pnpm build",
+    "test": "turbo test",
+    "test:coverage": "turbo test:coverage",
+    "lint": "turbo lint",
+    "lint:fix": "turbo lint:fix",
+    "dev": "turbo watch start",
+    "watch": "turbo watch build",
+    "typecheck": "turbo typecheck",
+    "prepare": "husky || true"
+  },
+  "dependencies": {
+    "turbo": "^2.0.6"
+  },
+  "devDependencies": {
+    "rimraf": "^6.0.0"
+  }
+}

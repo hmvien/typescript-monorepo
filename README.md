@@ -1,2 +1,2 @@
 # typescript-monorepo
-Template for TypeScript monorepo
+Template for TypeScript monorepo 
