@@ -1,5 +1,8 @@
 {
   "extends": "@monorepo/configs/tsconfig.build.json",
+  "compilerOptions": {
+    "outDir": "./dist"
+  },
   "include": ["*.ts", "src/**/*.ts"],
   "exclude": ["node_modules", "tests", "fixtures", "**/*.test.ts"]
 }
