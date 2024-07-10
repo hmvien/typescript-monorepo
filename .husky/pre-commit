@@ -1,0 +1,25 @@
+#!/usr/bin/env sh
+
+# Detect if a new workspace was added and update the pnpm-lock.yaml file with the new workspace ref
+if git diff --cached --name-only | grep --quiet "package.json"
+then
+  # corepack is required to ensure we're using the version of pnpm as defined in our package.json file.
+  # This will fail if you're using some Git GUIs like SourceTree and we want it to fail if we can't guarantee
+  # corepack is enabled. It's better to fail, than to accidentally overwriting the lockfile with a different format.
+  corepack enable
+  
+  # Install the new workspace and update the pnpm-lock.yaml file
+  pnpm install
+  git add 'pnpm-lock.yaml'
+
+  # Setup shared configs
+  pnpm tsx scripts/setup-shared-configs-to-workspaces.ts
+  git add '*.lintstagedrc.json'
+fi
+
+# Lint in the next step requires workspaces to be built, but we don't need to build everything. 
+# This filter will build only the dependencies of changed workspaces (excluding the changed workspaces).
+# This is enough to have a successful linting process.
+pnpm build --filter='[HEAD^1...HEAD]^...' --output-logs new-only
+
+pnpm lint-staged

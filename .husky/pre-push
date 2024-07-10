@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+# Trigger typecheck on changed workspaces and all of its dependents
+pnpm typecheck --filter='...[master...HEAD]' --output-logs new-only
