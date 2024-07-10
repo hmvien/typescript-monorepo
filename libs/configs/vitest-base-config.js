@@ -1,12 +1,16 @@
-import { defineConfig } from "vitest/config";
 import tsconfigPaths from "vite-tsconfig-paths";
-import { fileURLToPath } from "node:url";
-import { dirname } from "node:path";
+import { defineConfig } from "vitest/config";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+/**
+ * @typedef {import('vite').UserConfig} UserConfig
+ */
 
-export default function getConfig(workspaceRoot: string) {
+/**
+ *
+ * @param {string} workspaceRoot
+ * @returns {UserConfig}
+ */
+export function getConfig(workspaceRoot) {
   return defineConfig({
     plugins: [
       tsconfigPaths({

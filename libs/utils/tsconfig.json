@@ -1,0 +1,5 @@
+{
+  "extends": "@monorepo/configs/tsconfig.dev.json",
+  "include": ["*.ts", "src/**/*.ts", "tsup.config.js"],
+  "exclude": ["node_modules"]
+}

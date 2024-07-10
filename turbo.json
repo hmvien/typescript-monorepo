@@ -1,0 +1,83 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "ui": "stream",
+  // Disable strict mode https://turbo.build/repo/docs/crafting-your-repository/using-environment-variables#strict-mode
+  // We load environment variables from the `.env` file at run-time so there is no need to be in strict mode. It also
+  // will break CI/CD
+  "globalPassThroughEnv": ["*"],
+  "tasks": {
+    "build": {
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "!dist",
+        "!node_modules",
+        "**/*.json", // ensure we blow out the cache if we change a config for optimism
+        "src/**/*.ts",
+        "fixtures/**/*.ts",
+        "tests/**/*.ts"
+      ],
+      "outputs": ["dist/**"],
+      "dependsOn": ["^build"],
+      "outputLogs": "new-only"
+    },
+    "clean": {
+      "cache": false
+    },
+    "test": {
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "src/**/*.ts",
+        "fixtures/**/*.ts",
+        "tests/**/*.ts"
+      ],
+      "outputs": [],
+      "dependsOn": ["^build"],
+      "outputLogs": "new-only"
+    },
+    "test:coverage": {
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "src/**/*.ts",
+        "fixtures/**/*.ts",
+        "tests/**/*.ts"
+      ],
+      "outputs": [],
+      "dependsOn": ["^build"],
+      "outputLogs": "new-only"
+    },
+    "lint": {
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "src/**/*.ts",
+        "fixtures/**/*.ts",
+        "tests/**/*.ts"
+      ],
+      "dependsOn": ["^build"],
+      "outputLogs": "new-only"
+    },
+    "lint:fix": {
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "src/**/*.ts",
+        "fixtures/**/*.ts",
+        "tests/**/*.ts"
+      ],
+      "dependsOn": ["^build"],
+      "outputLogs": "new-only"
+    },
+    "typecheck": {
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "src/**/*.ts",
+        "fixtures/**/*.ts",
+        "tests/**/*.ts"
+      ],
+      "dependsOn": ["^build"]
+    },
+    "dev": {
+      "dependsOn": ["^build"],
+      "cache": false,
+      "persistent": true
+    }
+  }
+}

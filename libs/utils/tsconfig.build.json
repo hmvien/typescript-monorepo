@@ -1,0 +1,5 @@
+{
+  "extends": "@monorepo/configs/tsconfig.build.json",
+  "include": ["*.ts", "src/**/*.ts"],
+  "exclude": ["node_modules", "tests", "fixtures", "**/*.test.ts"]
+}

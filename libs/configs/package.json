@@ -2,19 +2,16 @@
   "name": "@monorepo/configs",
   "version": "0.0.1",
   "type": "module",
-  "files": [
-    "dist/**"
-  ],
   "exports": {
-    "./*": "./dist/*.js"
+    "./*": "./*.js",
+    "./*.json": "./*.json"
   },
   "private": true,
   "scripts": {
     "clean": "rimraf dist",
-    "lint": "run-s lint:biome typecheck",
+    "lint": "run-s lint:biome",
     "lint:fix": "biome check --write",
-    "lint:biome": "biome check",
-    "typecheck": "tsc --noEmit --project tsconfig.build.json"
+    "lint:biome": "biome check"
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.0",

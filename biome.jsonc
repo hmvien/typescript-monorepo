@@ -1,7 +1,13 @@
 {
   "$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
   "files": {
-    "include": ["*.ts", "src/**/*.ts", "src/**/*.tsx", "src/**/*.js", "src/**/*.jsx"]
+    "include": [
+      "**/*.js",
+      "**/*.jsx",
+      "**/*.ts",
+      "**/*.tsx"
+    ],
+    "ignore": ["node_modules/**/*", "dist/**/*"]
   },
   "organizeImports": {
     "enabled": true
@@ -10,7 +16,8 @@
     "enabled": true,
     "rules": {
       "recommended": true
-    }
+    },
+    "ignore": ["node_modules", "dist", "turbo.json"]
   },
   "formatter": {
     "enabled": true,
