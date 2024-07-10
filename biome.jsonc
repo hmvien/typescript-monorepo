@@ -7,7 +7,7 @@
       "**/*.ts",
       "**/*.tsx"
     ],
-    "ignore": ["node_modules/**/*", "dist/**/*"]
+    "ignore": ["node_modules", "dist", "coverage"]
   },
   "organizeImports": {
     "enabled": true
