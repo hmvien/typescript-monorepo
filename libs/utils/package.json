@@ -1,0 +1,30 @@
+{
+  "name": "@monorepo/utils",
+  "version": "0.0.1",
+  "type": "module",
+  "files": [
+    "dist/**"
+  ],
+  "exports": {
+    "./*": "./dist/*.js"
+  },
+  "private": true,
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "run-p build:*",
+    "build:tsup": "tsup",
+    "build:types": "tsc --project tsconfig.build.json --emitDeclarationOnly",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "lint": "run-p lint:biome typecheck",
+    "lint:fix": "biome check --write",
+    "lint:biome": "biome check",
+    "typecheck": "tsc --noEmit --project tsconfig.build.json"
+  },
+  "devDependencies": {
+    "@monorepo/configs": "workspace:^",
+    "@types/node": "^20.14.10",
+    "tslib": "^2.6.3",
+    "typescript": "^5.5.3"
+  }
+}

@@ -128,3 +128,12 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+.turbo
+
+.vscode/settings.json
+
+# Build artifacts that should have been deleted, but didn't because multiple `pnpm build` were colliding with each other
+# This usually happens when `pnpm dev` is running in the background and we trigger another build.
+*timestamp-*.mjs
+*bundled_*.mjs

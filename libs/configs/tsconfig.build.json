@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "declaration": true,
+    "declarationMap": true,
+    "inlineSources": true,
+    "noEmit": false,
+    "sourceMap": true,
+    "sourceRoot": "/"
+  },
+  "include": ["*.ts", "src/**/*.ts"],
+  "exclude": ["node_modules", "tests", "fixtures", "**/*.test.ts"]
+}

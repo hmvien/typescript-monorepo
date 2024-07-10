@@ -1,0 +1,39 @@
+{
+  "extends": "@tsconfig/node22/tsconfig.json",
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "./dist",
+    "allowJs": false,
+
+    // Need these two for sourcemap to function correctly
+    "importHelpers": true,
+    "noEmitHelpers": true,
+
+    "noEmit": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "resolveJsonModule": true,
+    "strict": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "inlineSources": true,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+
+    // Enable for better compatibility with type imports
+    "verbatimModuleSyntax": true,
+
+    "types": ["node", "vitest/globals"],
+    "paths": {
+      "@/*": ["./src/*"],
+      "@/fixtures/*": ["./fixtures/*"],
+      "@/tests/*": ["./tests/*"]
+    }
+  },
+  "include": ["*.ts", "src/**/*.ts", "tests/**/*.ts", "fixtures/**/*.ts"],
+  "exclude": ["node_modules"]
+}
