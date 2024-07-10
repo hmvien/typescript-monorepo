@@ -3,6 +3,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": ".",
+    "outDir": "./dist",
     "allowJs": false,
 
     // Need these two for sourcemap to function correctly
@@ -33,5 +34,6 @@
       "@/tests/*": ["./tests/*"]
     }
   },
+  "include": ["*.ts", "src/**/*.ts", "tests/**/*.ts", "fixtures/**/*.ts"],
   "exclude": ["node_modules"]
 }

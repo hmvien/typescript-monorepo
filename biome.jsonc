@@ -1,13 +1,16 @@
 {
   "$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
   "files": {
-    "include": [
-      "**/*.js",
-      "**/*.jsx",
-      "**/*.ts",
-      "**/*.tsx"
-    ],
-    "ignore": ["node_modules", "dist", "coverage"]
+    "include": ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"],
+    "ignore": [
+      "node_modules",
+      "dist",
+      "coverage",
+      // Build artifacts that should have been deleted, but didn't because multiple `pnpm build` were colliding with each other
+      // This usually happens when `pnpm dev` is running in the background and we trigger another build.
+      "*timestamp-*.mjs",
+      "*bundled-*.mjs"
+    ]
   },
   "organizeImports": {
     "enabled": true

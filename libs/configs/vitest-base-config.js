@@ -23,15 +23,6 @@ export function getConfig(workspaceRoot) {
       coverage: {
         all: true,
         provider: "v8",
-        exclude: [
-          "watch.ts",
-          "env.ts",
-          // Generally want to ignore the main file and scripts since we can't automate those
-          "src/main.ts",
-          "src/env.ts",
-          "src/scripts/**/*.ts",
-          "fixtures/**/*.ts",
-        ],
         reporter: ["text", "json", "html"],
       },
     },
